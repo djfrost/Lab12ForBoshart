@@ -198,10 +198,6 @@ void BinarySearchTree<T>::minimize(T** items, int first, int last)
     int mid = (last+first)/2;
     T* mid_item = items[mid];
     TreeNode<T>* mid_node = new TreeNode<T>(mid_item);
-    if (this->getRootNode() == NULL)
-    {
-        this->insert(items[mid]);                                
-    }
     
     this->insert(items[mid]);
     
