@@ -102,19 +102,43 @@ template < class T >
 int BinarySearchTree<T>::getHeight(TreeNode<T>* tNode)
 {
    //DO THIS
-   int height = 0;
-   
    if (tNode->getRight() == NULL && tNode->getLeft() == NULL)
    {
        return height;                      
    }
 
-   TreeNode<T>* left_node = tNode->getLeft();
-   TreeNode<T>* right_node = tNode->getRight();
+   int height = 0;
+   int height_left = 0;
+   int height_right = 0;   
+
    if (tNode->getLeft() != NULL)
    {
-                            
+       TreeNode<T>* left_node = tNode->getLeft();
+       int subtree_height = getHeight(left_node)+1;
+       height_left = subtree_height;                               
    }
+   
+   if (tNode->getRight() != NULL)
+   {
+       TreeNode<T>* right_node = tNode->getRight();
+       int subtree_height = getHeight(right_node)+1;
+       height_right = subtree_height;                             
+   }
+   
+   if (height_left > height_right)
+   {
+       height = height_left;           
+   }
+   else if (height_right > height_left)
+   {
+       height = height_right;     
+   }
+   else
+   {
+       height = height_left;    
+   }
+   
+   return height;
 }
 
 template < class T >
