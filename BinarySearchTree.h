@@ -195,6 +195,11 @@ void BinarySearchTree<T>::minimize(T** items, int first, int last)
 //Recursive calls on the left-of-mid subarray and right-of-mid subarray will insert the optimal elements as root's left child and root's right child
 //Be sure to update first and last for each subarray.
 // Recursion continues until all of the elements in the inorder traversal array have been inserted into the new bst
+    if (first >= last)
+    {
+        return;          
+    }
+
     int mid = (last+first)/2;
     T* mid_item = items[mid];
     TreeNode<T>* mid_node = new TreeNode<T>(mid_item);
@@ -209,8 +214,6 @@ void BinarySearchTree<T>::minimize(T** items, int first, int last)
     {
         minimize(items, mid+1, last);                         
     }
-
-
 }
 
 template < class T >
