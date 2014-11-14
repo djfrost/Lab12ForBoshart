@@ -1,7 +1,8 @@
 AutomatedMakefile = am
 CC = g++
 
-FILES = BSTDriver.cpp DrawBST.cpp
+FILES =  DrawBST.o
+#BSTDriver.o
 EXECUTABLE = BST.exe
 
 PROJECT_PATH = $(PROJECT_DIR)
@@ -25,5 +26,5 @@ Lab12: 		$(FILES)
 
 BSTDriver.o: BSTDriver.cpp BinarySearchTree.h
 				$(COMPILE) BSTDriver.cpp
-DrawBST.o: DrawBST.o BinarySearchTree.h
+DrawBST.o: DrawBST.cpp BinarySearchTree.h
 			$(COMPILE) DrawBST.cpp
