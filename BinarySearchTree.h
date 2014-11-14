@@ -160,7 +160,7 @@ bool BinarySearchTree<T>::isBalanced(TreeNode<T>* tNode)
 	{
 		int lHeight = tNode->getLeft()->getHeight();
 		int rHeight = tNode->getRight()->getHeight();
-		if(lHeight == rHeight || lHeight == (rHeight -1) || lHeight == (rHeight +1))
+		if(lHeight >= (rHeight-1) && lHeight <= (rHeight+1))
 		{
 			return true;
 		}
@@ -225,8 +225,12 @@ BinarySearchTree<T>* BinarySearchTree<T>::minimizeComplete()
    T** items = toArray();
    BinarySearchTree<T>* bst = new BinarySearchTree<T>(compare_items, compare_keys);
    //DO THIS
-	
-
+	minimizeComplete(items, 0, (sze-1));
+	for(int i = 0; i<sze; i++)
+	{
+		bst->insert(items[i];
+	}
+	return bst;
 }
 
 template < class T >
@@ -247,10 +251,10 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
       if (first < last)
       {
          //initial log computations using mid
-         double k_left =                    //log base 2 of the number of items to the left of mid (including mid)
-         double int_k_left =                //same as above but rounded
-         double k_right =
-         double int_k_right =
+         double k_left =   log(mid-first)*log_factor;   // log(num_elements)*log_factor             //log base 2 of the number of items to the left of mid (including mid)
+         double int_k_left =   (int) (k_left+0.5); //same as above but rounded
+         double k_right = log(last-mid+1)*log_factor;
+         double int_k_right = (int) (k_right +0.5);
 
          //keep searching for spot where the number of elements to the left of mid is 2^k - 1 (a full tree)
          //which means the number of elements to the left of mid including mid is 2^k 
