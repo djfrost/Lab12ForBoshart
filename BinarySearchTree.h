@@ -180,7 +180,7 @@ BinarySearchTree<T>* BinarySearchTree<T>::minimize()
    BinarySearchTree<T>* bst = new BinarySearchTree<T>(compare_items, compare_keys);
    //DO THIS
 //Call the recursive minimize method on the new bst, passing the array and the first and last indices of the array [0...size - 1].
-
+	minimize(items, 0, (sze-1));
 
 
 }
