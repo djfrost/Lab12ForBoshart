@@ -179,7 +179,7 @@ BinarySearchTree<T>* BinarySearchTree<T>::minimize()
    T** items = toArray();
    BinarySearchTree<T>* bst = new BinarySearchTree<T>(compare_items, compare_keys);
    //DO THIS
-
+//Call the recursive minimize method on the new bst, passing the array and the first and last indices of the array [0...size - 1].
 
 
 
@@ -189,7 +189,12 @@ template < class T >
 void BinarySearchTree<T>::minimize(T** items, int first, int last)
 {
    //DO THIS (recursive minimize method)
-
+//compute the mid index from first and last (also, check the base case)
+//This is the root of the new binary search tree of minimum height. 
+//Pull that element from the array and insert it into the new bst (this)
+//Recursive calls on the left-of-mid subarray and right-of-mid subarray will insert the optimal elements as root's left child and root's right child
+//Be sure to update first and last for each subarray.
+// Recursion continues until all of the elements in the inorder traversal array have been inserted into the new bst
 
 
 
