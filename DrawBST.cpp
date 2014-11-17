@@ -27,7 +27,7 @@ int main(int argc, char** argv)
    }
    delete iter;
    delete cds;
-
+	cout << "Minimize problems";
    BinarySearchTree<CD>* min = bst->minimizeComplete();
    //BinarySearchTree<CD>* min = bst->minimize();
    delete bst;

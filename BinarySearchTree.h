@@ -104,7 +104,7 @@ int BinarySearchTree<T>::getHeight(TreeNode<T>* tNode)
    //DO THIS
    if (tNode->getRight() == NULL && tNode->getLeft() == NULL)
    {
-       return height;                      
+       return 0;                      
    }
 
    int height = 0;
@@ -167,7 +167,7 @@ bool BinarySearchTree<T>::isBalanced(TreeNode<T>* tNode)
 	}
 	else 
 	{
-		return false
+		return false;
 	}
 	// call isbalanced on left and right
 	// get height on left and right and compare with a difference of one or less
@@ -189,12 +189,7 @@ template < class T >
 void BinarySearchTree<T>::minimize(T** items, int first, int last)
 {
    //DO THIS (recursive minimize method)
-//compute the mid index from first and last (also, check the base case)
-//This is the root of the new binary search tree of minimum height. 
-//Pull that element from the array and insert it into the new bst (this)
-//Recursive calls on the left-of-mid subarray and right-of-mid subarray will insert the optimal elements as root's left child and root's right child
-//Be sure to update first and last for each subarray.
-// Recursion continues until all of the elements in the inorder traversal array have been inserted into the new bst
+
     if (first >= last)
     {
         return;          
@@ -243,7 +238,7 @@ BinarySearchTree<T>* BinarySearchTree<T>::minimizeComplete()
 	minimizeComplete(items, 0, (sze-1));
 	for(int i = 0; i<sze; i++)
 	{
-		bst->insert(items[i];
+		bst->insert(items[i]);
 	}
 	return bst;
 }
@@ -295,7 +290,9 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
       //DO THIS
       //found the next item to insert into the tree
       //get it, insert it, and make two recursive calls
-
+	  this->insert(items[mid]);
+	  minimizeComplete(items, first, mid);
+	  minimizeComplete(items, mid, last);
 
 
 
