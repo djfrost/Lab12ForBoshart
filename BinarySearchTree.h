@@ -156,10 +156,10 @@ bool BinarySearchTree<T>::isBalanced(TreeNode<T>* tNode)
 	{
 		return true;
 	}
-	else if(isBalanced(tNode->getLeft()) == true && isBalanced(tNode->getRight()))
+	else if(isBalanced(tNode->getLeft()) == true && isBalanced(tNode->getRight()) == true)
 	{
-		int lHeight = tNode->getLeft()->getHeight();
-		int rHeight = tNode->getRight()->getHeight();
+		int lHeight = getHeight(tNode->getLeft());
+		int rHeight = getHeight(tNode->getRight());
 		if(lHeight >= (rHeight-1) && lHeight <= (rHeight+1))
 		{
 			return true;
