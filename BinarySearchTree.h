@@ -8,6 +8,9 @@
 #include "Drawable.h"
 using CSC2110::String;
 
+#include <iostream>
+using namespace std;
+
 template < class T >
 class BinarySearchTree : public Drawable
 {
@@ -235,9 +238,11 @@ BinarySearchTree<T>* BinarySearchTree<T>::minimizeComplete()
    T** items = toArray();
    BinarySearchTree<T>* bst = new BinarySearchTree<T>(compare_items, compare_keys);
    //DO THIS
+   cout << "call other minimizeCompltete" << endl;
 	minimizeComplete(items, 0, (sze-1));
 	for(int i = 0; i<sze; i++)
 	{
+        cout << "Insert item to BST" << endl;    
 		bst->insert(items[i]);
 	}
 	return bst;
@@ -261,10 +266,15 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
       if (first < last)
       {
          //initial log computations using mid
+         cout << "Initial calculation. | Mid: " << mid << endl;
          double k_left =   log(mid-first)*log_factor;   // log(num_elements)*log_factor             //log base 2 of the number of items to the left of mid (including mid)
+         cout << "k_left: " << k_left << endl;
          double int_k_left =   (int) (k_left+0.5); //same as above but rounded
+         cout << "int_k_left: " << int_k_left << endl;
          double k_right = log(last-mid+1)*log_factor;
+         cout << "k_right: " << k_right << endl;
          double int_k_right = (int) (k_right +0.5);
+         cout << "int_k_right: " << int_k_right << endl; 
 
          //keep searching for spot where the number of elements to the left of mid is 2^k - 1 (a full tree)
          //which means the number of elements to the left of mid including mid is 2^k 
@@ -276,13 +286,16 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
             mid++;
             //DO THIS
             //try again with mid shifted one to the right
-			
-			double k_left =   log(mid-first)*log_factor;   // log(num_elements)*log_factor             //log base 2 of the number of items to the left of mid (including mid)
-			double int_k_left =   (int) (k_left+0.5); //same as above but rounded
-			double k_right = log(last-mid+1)*log_factor;
-			double int_k_right = (int) (k_right +0.5);
-
-
+			cout << "Mid: " << mid << endl;
+			k_left =   log(mid-first)*log_factor;   // log(num_elements)*log_factor             //log base 2 of the number of items to the left of mid (including mid)
+			cout << "k_left: " << k_left << endl;
+			int_k_left =   (int) (k_left+0.5); //same as above but rounded
+			cout << "int_k_left: " << int_k_left << endl;
+			k_right = log(last-mid+1)*log_factor;
+			cout << "k_right: " << k_right << endl;
+			int_k_right = (int) (k_right +0.5);
+            cout << "int_k_right: " << int_k_right << endl;
+            
 
          }
       }
@@ -290,8 +303,11 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
       //DO THIS
       //found the next item to insert into the tree
       //get it, insert it, and make two recursive calls
+      cout << "insert items at mid into the tree" << endl;
 	  this->insert(items[mid]);
+	  cout << "Recursion:  first half of the array" << endl;
 	  minimizeComplete(items, first, mid);
+	  cout << "Recursion:  last half of the array" << endl;
 	  minimizeComplete(items, mid, last);
 
 
